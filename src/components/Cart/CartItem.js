@@ -6,7 +6,7 @@ const CartItem = props => {
     id,
     img,
     price,
-    title,
+    name,
     sizePizza,
     count,
     removeProduct,
@@ -24,8 +24,8 @@ const CartItem = props => {
   };
   return (
     <CollectionItem key={id}>
-      <img src={img} alt={title} className="CartImg" />
-      <span className="CartTitle">{`${title} ${sizePizza ? sizePizza : ""} ${
+      <img src={img} alt={name} className="CartImg" />
+      <span className="CartTitle">{`${name} ${sizePizza ? sizePizza : ""} ${
         sizePizza ? "см" : ""
       } `}</span>
       <div className="CartAmountProduct">

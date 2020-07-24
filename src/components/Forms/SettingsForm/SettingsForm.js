@@ -56,13 +56,13 @@ let SettingsForm = props => {
       />
       <div className="SettingsFormBtns">
         <Btn
-          type="submit"
+          type="btn"
+          submit={true}
           title="Сохранить"
           size="medium"
-          button={true}
           onClick={handleSubmit.bind(this)}
         />
-        <Btn href="/profile" title="Назад" size="medium" link={true} />
+        <Btn type="link" to="/profile" title="Назад" size="medium" />
       </div>
     </form>
   );

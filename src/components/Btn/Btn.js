@@ -4,31 +4,24 @@ import { Link } from "react-router-dom";
 import mod from "./Btn.module.sass";
 
 const Btn = props => {
-  const { link, href, button, submit, title, size, target, onClick } = props;
+  const { type, title, submit, to, target, size, onClick } = props;
   const sizeBtn = () => {
-    if (size === "min") {
-      return mod.min;
-    }
-    if (size === "medium") {
-      return mod.medium;
-    }
-    if (size === "big") {
-      return mod.big;
+    switch (size) {
+      case "min":
+        return mod.min;
+      case "medium":
+        return mod.medium;
+      case "big":
+        return mod.big;
+      default:
+        return mod.medium;
     }
   };
-  const renderBtn = () => {
-    if (button) {
-      return submit ? (
+  const Btn = () => {
+    if (type === "btn") {
+      return (
         <button
-          type="submit"
-          onClick={onClick && onClick}
-          className={sizeBtn()}
-        >
-          {title}
-        </button>
-      ) : (
-        <button
-          type="button"
+          type={submit ? `submit` : `button`}
           onClick={onClick && onClick}
           className={sizeBtn()}
         >
@@ -36,24 +29,29 @@ const Btn = props => {
         </button>
       );
     }
-    if (link) {
-      return target ? (
-        <a
-          href={href}
-          target={target && "_blank"}
-          rel={target && "noreferrer noopener"}
-          className={sizeBtn()}
-          onClick={onClick && onClick}
-        >
-          {title}
-        </a>
-      ) : (
-        <Link to={href} className={sizeBtn()} onClick={onClick && onClick}>
-          {title}
-        </Link>
-      );
-    }
   };
-  return <>{renderBtn()}</>;
+  const BtnLink = () => {
+    return target ? (
+      <a
+        href={to}
+        target={target && "_blank"}
+        rel={target && "noreferrer noopener"}
+        className={sizeBtn()}
+        onClick={onClick && onClick}
+      >
+        {title}
+      </a>
+    ) : (
+      <Link to={to} className={sizeBtn()} onClick={onClick && onClick}>
+        {title}
+      </Link>
+    );
+  };
+  return (
+    <>
+      {type === `btn` && Btn()}
+      {type === `link` && BtnLink()}
+    </>
+  );
 };
 export default Btn;

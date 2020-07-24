@@ -1,0 +1,43 @@
+@import "~../../../../styles/variables.sass"
+
+
+// ==============================
+
+@keyframes imageloader 
+  0% 
+    transform: rotate(0deg)
+  
+  100% 
+    transform: rotate(360deg)
+    
+.ImageLoader 
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 0 5px
+  padding-top: 15px
+  position: relative
+  height: 255px
+  overflow: hidden
+  background: $bg2
+  div
+    height: 255px
+    min-height: 255px
+    display: flex
+    align-items: center
+    justify-content: center
+  svg
+    animation: imageloader 1s linear 0s normal none infinite running 
+    height: 20px
+    width: 20px
+    fill: $colorText
+    opacity: 0.2
+  img 
+    width: auto 
+    max-width: 99%
+    height: auto
+    max-height: 250px
+    animation: imgs 1000ms
+    position: absolute
+    @media screen and(max-width:420px)
+      width: auto

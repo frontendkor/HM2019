@@ -3,7 +3,7 @@ import { LOGIN } from "../../actions/Profile/Login";
 import { LOGOUT } from "../../actions/Profile/Logout";
 
 const initialState = {
-  authenticated: false,
+  isAuth: false,
   userLogin: "",
   password: "",
   phone: "",
@@ -15,7 +15,7 @@ const ProfileR = (state = initialState, action) => {
     case REGISTRATION:
       return {
         ...state,
-        authenticated: action.payload.authenticated,
+        isAuth: action.payload.isAuth,
         userLogin: action.payload.userLogin,
         password: action.payload.password,
         phone: action.payload.phone
@@ -23,14 +23,14 @@ const ProfileR = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        authenticated: action.payload.authenticated,
+        isAuth: action.payload.isAuth,
         userLogin: action.payload.userLogin,
         password: action.payload.password
       };
     case LOGOUT:
       return {
         ...state,
-        authenticated: action.payload.authenticated,
+        isAuth: action.payload.isAuth,
         userLogin: action.payload.userLogin,
         password: action.payload.password
       };

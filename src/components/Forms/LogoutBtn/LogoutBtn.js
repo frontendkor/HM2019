@@ -7,7 +7,6 @@ import Btn from "../../Btn/Btn";
 import Logout from "../../../actions/Profile/Logout";
 
 import "./LogoutBtn.sass";
-// import "./AuthorizationForm.sass";
 
 const LogoutBtn = props => {
   const { Logout } = props;
@@ -17,10 +16,10 @@ const LogoutBtn = props => {
   return (
     <div className="LogoutBtnContainer">
       <Btn
-        href="/registration"
+        type="link"
+        to="/profile"
         title="Выйти"
         size="medium"
-        link={true}
         onClick={exit.bind(this)}
       />
     </div>

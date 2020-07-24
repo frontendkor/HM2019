@@ -1,10 +1,10 @@
 export const LOGIN = "LOGIN";
 
-const Login = (authenticated, userLogin, password) => {
+const Login = (userLogin, password) => {
   return {
     type: LOGIN,
     payload: {
-      authenticated: authenticated,
+      isAuth: true,
       userLogin: userLogin,
       password: password
     }

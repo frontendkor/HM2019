@@ -1,10 +1,10 @@
 export const LOGOUT = "LOGOUT";
 
-const Logout = authenticated => {
+const Logout = () => {
   return {
     type: LOGOUT,
     payload: {
-      authenticated: authenticated,
+      isAuth: false,
       userLogin: "",
       password: ""
     }

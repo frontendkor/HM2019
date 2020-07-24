@@ -2,24 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import ProductCard from "./ProductCard/ProductCard";
+import RenderCard from "./RenderCard/RenderCard";
 
 import addProduct from "../../actions/Cart/addProduct";
 
-// import "./RenderCatalog.sass";
-
 class RenderCatalog extends Component {
-  RenderProductCart() {
+  RenderProductCard() {
     const { addProduct, cartData, typeProduct, products } = this.props;
     return products.map(item => {
       return (
-        item.ind === typeProduct && (
-          <ProductCard
+        item.typeProduct === typeProduct && (
+          <RenderCard
             key={item.id}
             typeProduct={typeProduct}
-            ind={item.ind}
             id={item.id}
-            title={item.title}
+            name={item.name}
             price={item.price}
             composition={item.composition}
             coffe={item.coffe}
@@ -31,7 +28,7 @@ class RenderCatalog extends Component {
     });
   }
   render() {
-    return <>{this.RenderProductCart()}</>;
+    return <>{this.RenderProductCard()}</>;
   }
 }
 
@@ -48,8 +45,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-ProductCard.propTypes = {
-  typeProduct: PropTypes.string.isRequired
+RenderCatalog.propTypes = {
+  typeProduct: PropTypes.string.isRequired,
+  addProduct: PropTypes.func.isRequired
 };
 
 export default connect(

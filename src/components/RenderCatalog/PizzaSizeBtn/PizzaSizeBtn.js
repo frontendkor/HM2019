@@ -1,38 +1,39 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import mod from "./PizzaSizeBtn.module.sass";
 
 export const PizzaSizeBtn = props => {
-  const clickBtn = params => {
-    const { funk, active } = props;
-    funk(active);
+  const [active, SetActiv] = useState(+props.price[2]);
+  const clickBtn = e => {
+    SetActiv(+e.target.value);
+    props.func(e);
   };
-  return (
-    <div className={mod.SizePizza}>
-      <button
-        type="button"
-        className={mod.SizePizzaBtn}
-        value={props.price[0]}
-        onClick={clickBtn}
-      >
-        60см
-      </button>
-      <button
-        type="button"
-        className={mod.SizePizzaBtn}
-        value={props.price[1]}
-        onClick={clickBtn}
-      >
-        45см
-      </button>
-      <button
-        type="button"
-        className={mod.SizePizzaBtn}
-        value={props.price[2]}
-        onClick={clickBtn}
-      >
-        25см
-      </button>
-    </div>
-  );
+  const renderBtns = () => {
+    const { id, price } = props;
+    return price.map((item, index) => {
+      const classis =
+        active === item
+          ? `${mod.SizePizzaBtn} ${mod.active}`
+          : mod.SizePizzaBtn;
+      return (
+        <button
+          key={`${id}${index}`}
+          type="button"
+          value={item}
+          onClick={clickBtn}
+          className={classis}
+        >
+          {index === 0 && `60см`}
+          {index === 1 && `45см`}
+          {index === 2 && `25см`}
+        </button>
+      );
+    });
+  };
+  return <div className={mod.SizePizza}>{renderBtns()}</div>;
+};
+
+PizzaSizeBtn.propTypes = {
+  func: PropTypes.func.isRequired,
+  price: PropTypes.array.isRequired
 };

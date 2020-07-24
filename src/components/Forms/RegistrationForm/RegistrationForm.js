@@ -52,10 +52,10 @@ let RegistrationForm = props => {
         classis="phone"
       />
       <Btn
-        type="submit"
+        type="btn"
+        submit={true}
         title="Зарегистрироваться"
         size="medium"
-        button={true}
         onClick={handleSubmit.bind(this)}
       />
     </form>

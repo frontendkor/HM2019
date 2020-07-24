@@ -38,16 +38,16 @@ let AuthorizationForm = props => {
       />
       <div className="AuthorizationFormBtns">
         <Btn
-          href="/registration"
+          type="link"
+          to="/registration"
           title="Зарегистрироваться"
           size="medium"
-          link={true}
         />
         <Btn
-          type="submit"
+          type="btn"
+          submit={true}
           title="Войти"
           size="medium"
-          button={true}
           onClick={handleSubmit.bind(this)}
         />
       </div>

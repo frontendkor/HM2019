@@ -20,8 +20,15 @@
     margin-right: 20px
     margin-top: 15px
     color: $colorText
+    &:hover
+      transition: all .3s
+      opacity: 0.9
+      color: $bg
+      background: $color2
 
-button:focus
+      
+
+button:focus, .active
     background: rgba(255, 255, 255, 0.4)
     color: $bg
     outline: none

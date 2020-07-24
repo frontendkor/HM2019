@@ -46,7 +46,7 @@ let ContactForm = props => {
         validate={correctInputPhone}
         classis="phone"
       />
-      <p className="label">Адрес</p>
+      <p className="label">Адрес доставки</p>
       <Field
         name="street"
         component={InputText}
@@ -77,10 +77,10 @@ let ContactForm = props => {
       />
       <div className="ContactFormBtns">
         <Btn
-          type="submit"
+          type="btn"
+          submit={true}
           title="Подтвердить заказ"
           size="medium"
-          button={true}
           onClick={handleSubmit.bind(this)}
         />
         <LogoutBtn />

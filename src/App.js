@@ -13,7 +13,6 @@ import SetPage from "./pages/CatalogPages/SetPage";
 import BurgerPage from "./pages/CatalogPages/BurgerPage";
 import DrinksPage from "./pages/CatalogPages/DrinksPage";
 import DeliveryPage from "./pages/DeliveryPage/DeliveryPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import CartPage from "./pages/CartPage/CartPage";
 import ActionsPage from "./pages/ActionsPage/ActionsPage";
 
@@ -26,13 +25,14 @@ import NavRight from "./components/Nav/NavRight";
 import { scrollTop } from "./secondaryFunctions/secondaryFunctions";
 
 import Logo from "./components/Logo/Logo";
+import Profile from "./components/Profile/Profile";
 import AuthorizationFormContainer from "./components/Forms/AuthorizationForm/AuthorizationFormContainer";
 import RegistrationFormContainer from "./components/Forms/RegistrationForm/RegistrationFormContainer";
 import SettingsFormContainer from "./components/Forms/SettingsForm/SettingsFormContainer";
 
 class App extends Component {
   render() {
-    const { sum, authenticated } = this.props;
+    const { sum } = this.props;
     return (
       <Router
         basename={
@@ -61,18 +61,14 @@ class App extends Component {
                 <Route path="/drinks" component={DrinksPage} />
                 <Route path="/cart" component={CartPage} />
                 <Route path="/delivery-payment" component={DeliveryPage} />
-                <ProfilePage
-                  exact
-                  path="/profile"
-                  authenticated={authenticated}
+                <Route path="/profile" component={Profile} />
+                <Route
+                  path="/authorization"
+                  component={AuthorizationFormContainer}
                 />
                 <Route
                   path="/registration"
                   component={RegistrationFormContainer}
-                />
-                <Route
-                  path="/authorization"
-                  component={AuthorizationFormContainer}
                 />
                 <Route path="/settings" component={SettingsFormContainer} />
                 <Route path="/actions" component={ActionsPage} />
@@ -92,7 +88,7 @@ class App extends Component {
 const mapStateToProps = store => {
   return {
     sum: store.cartData.sum,
-    authenticated: store.profile.authenticated
+    isAuth: store.profile.isAuth
   };
 };
 

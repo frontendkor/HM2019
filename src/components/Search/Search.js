@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ProductCard from "../RenderCatalog/ProductCard/ProductCard";
+import RenderCard from "../RenderCatalog/RenderCard/RenderCard";
 
 import Btn from "../Btn/Btn";
 import { connect } from "react-redux";
@@ -19,9 +19,7 @@ class Search extends Component {
   }
   inputChange(e) {
     const { value } = e.currentTarget;
-    this.setState({ inputValue: value });
-    this.setState({ result: [] });
-    this.setState({ resultNo: false });
+    this.setState({ inputValue: value, result: [], resultNo: false });
   }
   onSearch(e) {
     e.preventDefault();
@@ -43,11 +41,12 @@ class Search extends Component {
     const { addProduct, cartData } = this.props;
     return result.map(item => {
       return (
-        <ProductCard
+        <RenderCard
           key={item.id}
           ind={item.ind}
+          typeProduct={item.typeProduct}
           id={item.id}
-          title={item.title}
+          name={item.name}
           price={item.price}
           composition={item.composition}
           coffe={item.coffe}
@@ -65,7 +64,7 @@ class Search extends Component {
           <div className="SearchFormInputContainer">
             <input
               type="search"
-              placeholder="Введите ингридиент"
+              placeholder="Введите ингредиент"
               value={inputValue}
               onChange={this.inputChange.bind(this)}
             />
@@ -73,7 +72,7 @@ class Search extends Component {
 
           <div className="SearchFormBtnContainer">
             <Btn
-              button={true}
+              type="btn"
               submit={true}
               title="Найти"
               size="medium"

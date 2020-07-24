@@ -14,9 +14,9 @@ const Footer = props => {
       <div className="FooterContainer">
         <div className="FooterLinkActions">
           <Btn
-            href="/actions"
+            type="link"
+            to="/actions"
             size="min"
-            link={true}
             title="Акции !"
             onClick={clickActionsBtn}
           />

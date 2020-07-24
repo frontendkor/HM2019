@@ -16,14 +16,14 @@ class Cart extends Component {
   renderCartItem() {
     const { removeProduct, amountProduct, cartData } = this.props;
     const { cart } = cartData;
-    return cart.map(({ id, img, price, title, sizePizza, count }) => {
+    return cart.map(({ id, img, price, name, sizePizza, count }) => {
       return (
         <CartItem
           key={id}
           id={id}
           img={img}
           price={price}
-          title={title}
+          name={name}
           count={count}
           sizePizza={sizePizza}
           removeProduct={removeProduct}
@@ -46,19 +46,19 @@ class Cart extends Component {
               <CollectionItem>
                 <div className="CartBtn">
                   <Btn
-                    href="/sets"
+                    type="link"
+                    to="/sets"
                     title="Продолжить покупки"
                     size="medium"
-                    link={true}
                     onClick={scrollTop}
                   />
                 </div>
                 <div className="CartBtn">
                   <Btn
-                    href="/profile"
+                    type="link"
+                    to="/profile"
                     title="Оформить заказ"
                     size="medium"
-                    link={true}
                     onClick={scrollTop}
                   />
                 </div>
